@@ -1,0 +1,179 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> expression
+Rule 1     expression -> expression expression PLUS
+Rule 2     expression -> expression expression MINUS
+Rule 3     expression -> expression expression TIMES
+Rule 4     expression -> expression expression DIVIDE
+Rule 5     expression -> term
+Rule 6     term -> factor
+Rule 7     factor -> NUMBER
+
+Terminals, with rules where they appear
+
+DIVIDE               : 4
+MINUS                : 2
+NUMBER               : 7
+PLUS                 : 1
+TIMES                : 3
+error                : 
+
+Nonterminals, with rules where they appear
+
+expression           : 1 1 2 2 3 3 4 4 0
+factor               : 6
+term                 : 5
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . expression
+    (1) expression -> . expression expression PLUS
+    (2) expression -> . expression expression MINUS
+    (3) expression -> . expression expression TIMES
+    (4) expression -> . expression expression DIVIDE
+    (5) expression -> . term
+    (6) term -> . factor
+    (7) factor -> . NUMBER
+
+    NUMBER          shift and go to state 2
+
+    term                           shift and go to state 1
+    expression                     shift and go to state 4
+    factor                         shift and go to state 3
+
+state 1
+
+    (5) expression -> term .
+
+    PLUS            reduce using rule 5 (expression -> term .)
+    MINUS           reduce using rule 5 (expression -> term .)
+    TIMES           reduce using rule 5 (expression -> term .)
+    DIVIDE          reduce using rule 5 (expression -> term .)
+    NUMBER          reduce using rule 5 (expression -> term .)
+    $end            reduce using rule 5 (expression -> term .)
+
+
+state 2
+
+    (7) factor -> NUMBER .
+
+    PLUS            reduce using rule 7 (factor -> NUMBER .)
+    MINUS           reduce using rule 7 (factor -> NUMBER .)
+    TIMES           reduce using rule 7 (factor -> NUMBER .)
+    DIVIDE          reduce using rule 7 (factor -> NUMBER .)
+    NUMBER          reduce using rule 7 (factor -> NUMBER .)
+    $end            reduce using rule 7 (factor -> NUMBER .)
+
+
+state 3
+
+    (6) term -> factor .
+
+    PLUS            reduce using rule 6 (term -> factor .)
+    MINUS           reduce using rule 6 (term -> factor .)
+    TIMES           reduce using rule 6 (term -> factor .)
+    DIVIDE          reduce using rule 6 (term -> factor .)
+    NUMBER          reduce using rule 6 (term -> factor .)
+    $end            reduce using rule 6 (term -> factor .)
+
+
+state 4
+
+    (0) S' -> expression .
+    (1) expression -> expression . expression PLUS
+    (2) expression -> expression . expression MINUS
+    (3) expression -> expression . expression TIMES
+    (4) expression -> expression . expression DIVIDE
+    (1) expression -> . expression expression PLUS
+    (2) expression -> . expression expression MINUS
+    (3) expression -> . expression expression TIMES
+    (4) expression -> . expression expression DIVIDE
+    (5) expression -> . term
+    (6) term -> . factor
+    (7) factor -> . NUMBER
+
+    NUMBER          shift and go to state 2
+
+    term                           shift and go to state 1
+    expression                     shift and go to state 5
+    factor                         shift and go to state 3
+
+state 5
+
+    (1) expression -> expression expression . PLUS
+    (2) expression -> expression expression . MINUS
+    (3) expression -> expression expression . TIMES
+    (4) expression -> expression expression . DIVIDE
+    (1) expression -> expression . expression PLUS
+    (2) expression -> expression . expression MINUS
+    (3) expression -> expression . expression TIMES
+    (4) expression -> expression . expression DIVIDE
+    (1) expression -> . expression expression PLUS
+    (2) expression -> . expression expression MINUS
+    (3) expression -> . expression expression TIMES
+    (4) expression -> . expression expression DIVIDE
+    (5) expression -> . term
+    (6) term -> . factor
+    (7) factor -> . NUMBER
+
+    PLUS            shift and go to state 8
+    MINUS           shift and go to state 9
+    TIMES           shift and go to state 7
+    DIVIDE          shift and go to state 6
+    NUMBER          shift and go to state 2
+
+    term                           shift and go to state 1
+    expression                     shift and go to state 5
+    factor                         shift and go to state 3
+
+state 6
+
+    (4) expression -> expression expression DIVIDE .
+
+    PLUS            reduce using rule 4 (expression -> expression expression DIVIDE .)
+    MINUS           reduce using rule 4 (expression -> expression expression DIVIDE .)
+    TIMES           reduce using rule 4 (expression -> expression expression DIVIDE .)
+    DIVIDE          reduce using rule 4 (expression -> expression expression DIVIDE .)
+    NUMBER          reduce using rule 4 (expression -> expression expression DIVIDE .)
+    $end            reduce using rule 4 (expression -> expression expression DIVIDE .)
+
+
+state 7
+
+    (3) expression -> expression expression TIMES .
+
+    PLUS            reduce using rule 3 (expression -> expression expression TIMES .)
+    MINUS           reduce using rule 3 (expression -> expression expression TIMES .)
+    TIMES           reduce using rule 3 (expression -> expression expression TIMES .)
+    DIVIDE          reduce using rule 3 (expression -> expression expression TIMES .)
+    NUMBER          reduce using rule 3 (expression -> expression expression TIMES .)
+    $end            reduce using rule 3 (expression -> expression expression TIMES .)
+
+
+state 8
+
+    (1) expression -> expression expression PLUS .
+
+    PLUS            reduce using rule 1 (expression -> expression expression PLUS .)
+    MINUS           reduce using rule 1 (expression -> expression expression PLUS .)
+    TIMES           reduce using rule 1 (expression -> expression expression PLUS .)
+    DIVIDE          reduce using rule 1 (expression -> expression expression PLUS .)
+    NUMBER          reduce using rule 1 (expression -> expression expression PLUS .)
+    $end            reduce using rule 1 (expression -> expression expression PLUS .)
+
+
+state 9
+
+    (2) expression -> expression expression MINUS .
+
+    PLUS            reduce using rule 2 (expression -> expression expression MINUS .)
+    MINUS           reduce using rule 2 (expression -> expression expression MINUS .)
+    TIMES           reduce using rule 2 (expression -> expression expression MINUS .)
+    DIVIDE          reduce using rule 2 (expression -> expression expression MINUS .)
+    NUMBER          reduce using rule 2 (expression -> expression expression MINUS .)
+    $end            reduce using rule 2 (expression -> expression expression MINUS .)
+
